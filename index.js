@@ -33,16 +33,16 @@ connection.on("error", (error) => {
   console.log("Error: " + error);
 });
 connection.once("open", () => {
-  const collections = ["users", "messages", "rooms"];
+  const collections = ["messages", "rooms"];
   dropCollections(collections);
   console.log("MongoDB connection successful!");
 });
 
 const dropCollections = (collections) => {
   for (let i = 0; i < collections.length; i++) {
-    connection.db.dropCollection(collections[i], (err, result) => {
+    connection.db.dropCollection(collections[i], (err) => {
       if (err) {
-        console.log(`Error deleting the collection: ${collections[i]}`);
+        console.log(`The collection "${collections[i]}" is already empty!`);
       } else {
         console.log(`${collections[i]} collection droped`);
       }
