@@ -12,7 +12,12 @@ Clone the repository, `npm install` to install all dependencies and then `npm st
 
 Create a free MongoDB cloud database: [MongoDB Website](https://www.mongodb.com/).
 After creating the DB, in your cluster, click the `connect` button.
-This will open: 
+
+This will open: <img src="/media/connect-db.png" alt="db connection" width="352" height="306"/>
+
+Then copy the uri string from: <img src="/media/uri-db.png" alt="uri string" width="352" height="335"/>
+
+Paste it here:
 
 ```javascript
 // MongoDB Connection
