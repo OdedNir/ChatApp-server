@@ -8,7 +8,7 @@ The server side of the [ChatApp-client](https://github.com/OdedNir/ChatApp-clien
 
 Clone the repository, `npm install` to install all dependencies and then `npm start` to start the server up and running.
 
-> Runs locally on `localhost:5000`.
+> Note: Runs locally on `localhost:5000`.
 
 ## Setting Up MongoDB Connection
 
