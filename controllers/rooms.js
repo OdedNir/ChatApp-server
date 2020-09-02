@@ -1,6 +1,9 @@
 const includes = require("lodash/includes");
+const socketio = require("../services/socket-io-service");
 let RoomModel = require("../models/room.model");
 let MessageModel = require("../models/message.model");
+
+let io;
 
 const getRooms = (req, res) => {
   RoomModel.find()
@@ -15,20 +18,28 @@ const getRoom = (req, res) => {
 };
 
 const createRoom = async (req, res) => {
-  const { roomName, userNames } = req.body;
+  const { roomName, userName } = req.body;
+  if (!io) io = socketio.getIO();
 
   const newRoom = new RoomModel({
     roomName,
-    userNames,
+    userNames: [userName],
     messagesIds: [],
   });
 
   const room = await RoomModel.findOne({ roomName });
 
   if (room) {
-    if (!includes(room.userNames, ...userNames)) {
-      room.userNames.push(...userNames);
+    if (!includes(room.userNames, userName)) {
+      const data = {
+        userName,
+        existingUserNames: room.userNames,
+        roomName,
+        joinDate: new Date().getTime(),
+      };
+      io.emit("user joined", data);
 
+      room.userNames.push(userName);
       await room.save();
     }
 
@@ -71,6 +82,16 @@ const addMessage = async (req, res) => {
   await room.save();
 };
 
+const removeUser = async (req, res) => {
+  const { roomName, userName } = req.body;
+  if (io) io.emit("user left", { userName, roomName });
+  const room = await RoomModel.findOne({ roomName });
+  if (!room) return;
+  const index = room.userNames.indexOf(userName);
+  room.userNames.splice(index, 1);
+  await room.save();
+};
+
 module.exports = {
   getRooms,
   getRoom,
@@ -78,4 +99,5 @@ module.exports = {
   addUser,
   getMessages,
   addMessage,
+  removeUser,
 };

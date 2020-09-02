@@ -7,6 +7,7 @@ const rooms = (app) => {
   app.get("/rooms/addUser/:roomName/:userName", Rooms.addUser);
   app.get("/rooms/messages/:roomName/:latestDate", Rooms.getMessages);
   app.post("/rooms/addMessage", Rooms.addMessage);
+  app.post("/rooms/removeUser", Rooms.removeUser);
 };
 
 module.exports = rooms;
