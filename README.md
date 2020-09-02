@@ -1,3 +1,5 @@
+<img src="/media/speech-bubble.png" alt="chat logo" width="200" height="200"/>
+
 # Chat Web Application
 
 The server side of the [ChatApp-client](https://github.com/OdedNir/ChatApp-client).
@@ -13,11 +15,11 @@ Clone the repository, `npm install` to install all dependencies and then `npm st
 Create a free MongoDB cloud database: [MongoDB Website](https://www.mongodb.com/).
 After creating the DB, in your cluster, click the `connect` button.
 
-This will open: 
+This will open:
 
 <img src="/media/connect-db.png" alt="db connection" width="704" height="612"/>
 
-Then copy the uri string from: 
+Then copy the uri string from:
 
 <img src="/media/uri-db.png" alt="uri string" width="704" height="670"/>
 
