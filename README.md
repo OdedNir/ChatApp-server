@@ -15,11 +15,11 @@ After creating the DB, in your cluster, click the `connect` button.
 
 This will open: 
 
-<img src="/media/connect-db.png" alt="db connection" width="352" height="306"/>
+<img src="/media/connect-db.png" alt="db connection" width="704" height="612"/>
 
 Then copy the uri string from: 
 
-<img src="/media/uri-db.png" alt="uri string" width="352" height="335"/>
+<img src="/media/uri-db.png" alt="uri string" width="704" height="670"/>
 
 Paste it here:
 
