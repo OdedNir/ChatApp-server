@@ -21,7 +21,7 @@ Then copy the uri string from:
 
 <img src="/media/uri-db.png" alt="uri string" width="704" height="670"/>
 
-Paste it here:
+Paste it inside the index.js file:
 
 ```javascript
 // MongoDB Connection
