@@ -85,11 +85,17 @@ const addMessage = async (req, res) => {
 const removeUser = async (req, res) => {
   const { roomName, userName } = req.body;
   if (io) io.emit("user left", { userName, roomName });
+
   const room = await RoomModel.findOne({ roomName });
   if (!room) return;
+
   const index = room.userNames.indexOf(userName);
   room.userNames.splice(index, 1);
   await room.save();
+
+  if (room.userNames.length == 0) {
+    await RoomModel.findOneAndDelete({ roomName });
+  }
 };
 
 module.exports = {

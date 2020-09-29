@@ -1,5 +1,7 @@
 // Imports
 const express = require("express");
+// const socketio = require("socket.io");
+// const http = require("http");
 const socketio = require("./services/socket-io-service");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -23,11 +25,9 @@ app.use(bodyParser.json());
 setRouter(app);
 
 // MongoDB Connection
-const username = "USERNAME"; // REPLACE with your user name!
-const password = "PASSWORD"; // REPLACE with your password!
-// Put your uri inside: (Provided when creating a mongoDB database.)
-// For example:
-// const uri = `mongodb+srv://${username}:${password}@chatapp.qlqfi.mongodb.net/ChatApp?retryWrites=true&w=majority`;
+const username = "OdedNir";
+const password = "Skiper007";
+const uri = `mongodb+srv://${username}:${password}@chatapp.qlqfi.mongodb.net/ChatApp?retryWrites=true&w=majority`;
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useCreateIndex: true,
